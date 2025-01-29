@@ -1,16 +1,22 @@
-import { View, Text, StyleSheet, type ViewStyle } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  type ViewStyle,
+} from 'react-native';
 
 interface Props {
   children: JSX.Element;
   style?: ViewStyle;
+  onPress?: () => void;
 }
 
 const CircleButton = (props: Props): JSX.Element => {
-  const { children, style } = props;
+  const { children, style, onPress } = props;
   return (
-    <View style={[styles.circleButton, style]}>
+    <TouchableOpacity onPress={onPress} style={[styles.circleButton, style]}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -23,6 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
+    overflow: 'visible',
     right: 40,
     bottom: 40,
     shadowColor: '#000000',

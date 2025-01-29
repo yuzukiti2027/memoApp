@@ -1,6 +1,20 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+
+import { Link, router } from 'expo-router';
 
 import Header from '../../components/Header';
+import Button from '../../components/Button';
+
+const handlePress = (): void => {
+  // ログイン
+  router.push('/memo/list');
+};
 
 const LogIn = (): JSX.Element => {
   return (
@@ -10,12 +24,14 @@ const LogIn = (): JSX.Element => {
         <Text style={styles.title}>Log In</Text>
         <TextInput style={styles.input} value="Email Address" />
         <TextInput style={styles.input} value="Password" />
-        <View style={styles.button}>
-          <Text style={styles.buttonLabel}>Submit</Text>
-        </View>
+        <Button label="submit" onPress={handlePress} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registerd?</Text>
-          <Text style={styles.footerLink}>Sign up here!</Text>
+          <Link href="/auth/sign_up" asChild>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>Sign up here!</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>
@@ -45,20 +61,6 @@ const styles = StyleSheet.create({
     padding: 8,
     fontSize: 16,
     marginBottom: 16,
-  },
-  button: {
-    backgroundColor: '#33b251',
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    marginBottom: 24,
-  },
-  buttonLabel: {
-    fontSize: 16,
-    lineHeight: 32,
-    color: '#ffffff',
-    paddingVertical: 8,
-    paddingHorizontal: 24,
-    borderRadius: 4,
   },
   footer: {
     flexDirection: 'row',
