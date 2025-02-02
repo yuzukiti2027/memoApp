@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
+import { useEffect } from 'react';
 
+import LogOutButton from '../../components/LogOutButton';
 import Header from '../../components/Header';
 import MemoListItem from '../../components/MemoListItem';
 import CircleButton from '../../components/CircleButton';
@@ -11,9 +13,16 @@ const handlePress = (): void => {
 };
 
 const List = (): JSX.Element => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <LogOutButton />;
+      },
+    });
+  }, []);
   return (
     <View style={styles.container}>
-      <Header />
       <View>
         <MemoListItem />
         <MemoListItem />

@@ -13,13 +13,12 @@ import Button from '../../components/Button';
 
 const handlePress = (): void => {
   // 会員登録
-  router.push('/memo/list');
+  router.replace('/memo/list');
 };
 
 const SignUp = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Header />
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput style={styles.input} value="Email Address" />

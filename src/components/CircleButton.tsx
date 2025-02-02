@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    overflow: 'visible',
     right: 40,
     bottom: 40,
     shadowColor: '#000000',
